@@ -1,7 +1,31 @@
-Pilares de la programación orientada a objetos(POO - OOP):
-Encapsulación: Consiste en proteger información interna de las clases para evitar modificaciones arbitrarias o no intencionadas.
-Técnicamente la encapsulación se lleva a cabo definiendo todos los atributos de una clase como privados y acceder o asignar valores a ellos utilizando metodos publicos.
+Modificador static:
+Es un modificador que puede ser asignado a un atributos y metodos lo que permite poder acceder a estos miembros sin crear una instancia de la clase que los contiene. 
+Ademas en el caso de los atributos el valor es el mismo para cualquier instancia, es decir los valores son globales.
+Para acceder a un atributo/metodo static se usa el nombre de la clase:
+	
+		NombreClase.atributoStatic
+		NombreClase.metodoStatic()
 
-Abstracción:
-Herencia:
-Polimorfismo:
+
+Constructores:
+Un constructor es un método especial definido dentro de una clase, el objetivo principal de dicho método es inicializar los atributos internos de la clase o ejecutar métodos internos de inicialización.
+
+Caracteristicas de los constructores:
+	Tiene el mismo nombre de la clase
+	Debe ser public
+	No tiene tipo de dato de retorno (inclusive void)
+	Puede llevar parametros, usualmente se envia como parametros los valores para inicializar atributos.
+	Es el primer metodo que se ejecuta al instanciar (new)
+	Puede sobrecargarse.
+	En caso de no definir un constructor, Java crea un constructor vacio implicitamente.
+
+
+Pilares de la programación orientada a objetos(POO - OOP):
+	Encapsulación: Consiste en proteger información interna de las clases para evitar modificaciones arbitrarias o no intencionadas.
+	Técnicamente la encapsulación se lleva a cabo definiendo todos los atributos de una clase como privados y acceder o asignar valores a ellos utilizando metodos publicos.
+
+	Abstracción: Funcionalidad o caracteristica de los lenguajes de programación orientados a objetos que permite crear funciones o extender funcionalidades que pueden ser utilizadas por terceros, lo que implica que la persona/programador que utilice dichas funcionalidades se abstrae de su funcionamiento detallado.
+
+	Herencia:
+
+	Polimorfismo:
