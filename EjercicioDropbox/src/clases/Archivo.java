@@ -1,5 +1,8 @@
 package clases;
 
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class Archivo {
 	private String nombreArchivo;
 	private int tamanioBytes;
@@ -98,5 +101,53 @@ public class Archivo {
 		
 		return true;
 	}
+	
+	public void ingresarInformacion(Scanner entrada) {
+		do {
+			System.out.println("Nombre archivo: ");
+			this.nombreArchivo = entrada.next();
+		}while(!this.verificarExtension());
+		
+		do {
+			System.out.println("Tamaño en bytes: ");
+			this.tamanioBytes = entrada.nextInt();
+		}while(this.verificarTamanio() == false);
+		
+		this.usuario = new Usuario();
+		this.usuario.ingresarInformacion(entrada);
+		int cantidadUsuariosComparte =0;
+		do {
+			System.out.println("¿Con cuantos usuarios desea compartir el archivo?");
+			cantidadUsuariosComparte = entrada.nextInt();
+		}while (cantidadUsuariosComparte>5 && cantidadUsuariosComparte<0);
+		
+		usuarios = new Usuario[cantidadUsuariosComparte];
+		for (int i = 0; i<this.usuarios.length; i++) {
+			usuarios[i] = new Usuario();
+			System.out.println("*Ingresar datos de usuario " +  (i+1));
+			usuarios[i].ingresarInformacion(entrada);
+		}
+		System.out.println("Nombre carpeta: ");
+		this.nombreCarpeta = entrada.next();
+		
+		do {
+			System.out.println("Fecha de modificacion (DD-MM-YYYY): ");
+			this.fechaModificacion = new Fecha(entrada.next());
+		}while(this.fechaModificacion.verificarFecha() == false);
+		
+		do {
+			System.out.println("Fecha de subida (DD-MM-YYYY): ");
+			this.fechaSubida = new Fecha(entrada.next());
+		}while(!this.fechaSubida.verificarFecha());
+	}
+
+	@Override
+	public String toString() {
+		return "Archivo [nombreArchivo=" + nombreArchivo + ", tamanioBytes=" + tamanioBytes + ", usuario=" + usuario.toString()
+				+ ", usuarios=" + Arrays.toString(usuarios) + ", nombreCarpeta=" + nombreCarpeta
+				+ ", fechaModificacion=" + fechaModificacion + ", fechaSubida=" + fechaSubida + "]";
+	}
+	
+	
 	
 }

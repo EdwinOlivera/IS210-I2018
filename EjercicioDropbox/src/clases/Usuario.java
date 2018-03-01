@@ -2,6 +2,8 @@
 
 package clases;
 
+import java.util.Scanner;
+
 public class Usuario {
 	private String nombreUsuario;
 	private String correoElectronico;
@@ -14,7 +16,7 @@ public class Usuario {
 	public Usuario() {}
 
 	public boolean verficarCorreo() {
-		if (this.nombreUsuario.contains("@") && (this.nombreUsuario.indexOf("@")==this.nombreUsuario.lastIndexOf("@")))
+		if (this.correoElectronico.contains("@") && (this.correoElectronico.indexOf("@")==this.correoElectronico.lastIndexOf("@")))
 			return true;
 			
 		return false;
@@ -38,6 +40,15 @@ public class Usuario {
 
 	public String toString() {
 		return "Usuario [nombreUsuario=" + nombreUsuario + ", correoElectronico=" + correoElectronico + "]";
+	}
+	
+	public void ingresarInformacion(Scanner entrada) {
+		System.out.println("Usuario: ");
+		this.nombreUsuario = entrada.next();
+		do {
+			System.out.println("Correo: ");
+			this.correoElectronico = entrada.next();
+		}while(this.verficarCorreo()==false);
 	}
 		
 }

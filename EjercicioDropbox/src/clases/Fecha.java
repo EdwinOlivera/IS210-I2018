@@ -57,6 +57,10 @@ public class Fecha {
 		this.anio = anio;
 	}
 
+	public String toString() {
+		return "Fecha [dia=" + dia + ", mes=" + mes + ", anio=" + anio + "]";
+	}
+
 	
 	
 }
