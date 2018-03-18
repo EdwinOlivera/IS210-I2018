@@ -1,6 +1,8 @@
 package clases;
 
-public class Persona {
+import java.util.Arrays;
+
+public class Persona extends Object{
 	protected String nombre;
 	protected String  apellido;
 	protected int edad;
@@ -80,4 +82,17 @@ public class Persona {
 
 	public void aprobar() {}
 	public void reprobar() {}
+	
+	public String mostrarInformacion() {
+		System.out.println("Se ejecuto el metodo de la clase Persona");
+		return nombre + ","+apellido +","+carrera;
+	}
+
+	@Override
+	public String toString() {
+		return "Persona [nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", genero=" + genero
+				+ ", identidad=" + identidad + ", carrera=" + carrera + ", clases=" + Arrays.toString(clases) + "]";
+	}
+	
+	
 }

@@ -1,10 +1,23 @@
 package clases;
 
+import java.util.Arrays;
+
 public class Alumno extends Persona{
 	private String cuenta;
-	private float promedio;
-		
-	public Alumno(String cuenta, float promedio) {
+	private float promedio;	
+
+	public Alumno(
+			String nombre, 
+			String apellido, 
+			int edad, 
+			String genero, 
+			String identidad, 
+			String carrera,
+			String[] clases, 
+			String cuenta, 
+			float promedio
+	) {
+		super(nombre, apellido, edad, genero, identidad, carrera, clases);
 		this.cuenta = cuenta;
 		this.promedio = promedio;
 	}
@@ -30,12 +43,23 @@ public class Alumno extends Persona{
 		this.promedio = promedio;
 	}
 
-	public String mostrarInformacion(){
-		return nombre+" \t"+apellido;
-	}
-	
 	public void matricular() {}
 	
 	public void cancelarAsignatura() {}
+
+	@Override
+	public String mostrarInformacion() {
+		System.out.println("Se ejecuto el metodo de la clase Alumno");
+		return super.mostrarInformacion()+cuenta +","+promedio;
+	}
+
+	@Override
+	public String toString() {
+		return "Alumno [cuenta=" + cuenta + ", promedio=" + promedio + ", nombre=" + nombre + ", apellido=" + apellido
+				+ ", edad=" + edad + ", genero=" + genero + ", identidad=" + identidad + ", carrera=" + carrera
+				+ ", clases=" + Arrays.toString(clases) + "]";
+	}
+
 	
+
 }

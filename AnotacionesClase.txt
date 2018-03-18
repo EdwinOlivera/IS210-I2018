@@ -26,6 +26,20 @@ Pilares de la programación orientada a objetos(POO - OOP):
 
 	Abstracción: Funcionalidad o caracteristica de los lenguajes de programación orientados a objetos que permite crear funciones o extender funcionalidades que pueden ser utilizadas por terceros, lo que implica que la persona/programador que utilice dichas funcionalidades se abstrae de su funcionamiento detallado.
 
-	Herencia:
+	Herencia: Es la funcionalidad que permite identificar atributos y metodos en comun entre clases y encapsularlos en una nueva clase.
+	Esta nueva clase se convertiría en una clase padre, super clase, y cualquier otra clase que utilice esta nueva clase se le conoce como clase hija, sub clase o clase derivada.
+	Aplicar esta funcionalidad permite tener código más legible, ordenado y reutilizable.
+		*Para que los atributos puedan ser accedidos desde clases hijas sin perder la encapsulacion se deben declarar los atributos de la clase padre como protected.
 
+		*Sobreescritura de metodos: tecnica que se aplica en herencia para redefinir o escribir nuevamente en la clase hija un metodo que previamente estaba definido en la clase padre. Este nuevo metodo puede tener una funcionalidad completamente diferente.
+	
+
+		-Clases Abstractas o Clases Resumen(abstract)
+		Son clases que usualmente se definen como clases padre, para definir una clase como abstracta se antepone el modificador abstract.
+		Reglas o Caracteristicas:
+			-No se puede instanciar
+			-El modificador abstract se puede asignar a metodos, en caso de los metodos abstractos no tienen cuerpo.
+			-Los metodos abstractos deben sobreescribirse OBLIGATORIAMENTE en las clases hijas
+			-Si dentro de la clase hay al menos un metodo abstracto la clase DEBE ser abstracta.
+			-Una clase abstracta puede no tener metodos abstractos.
 	Polimorfismo:
