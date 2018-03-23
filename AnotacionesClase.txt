@@ -36,10 +36,38 @@ Pilares de la programación orientada a objetos(POO - OOP):
 
 		-Clases Abstractas o Clases Resumen(abstract)
 		Son clases que usualmente se definen como clases padre, para definir una clase como abstracta se antepone el modificador abstract.
-		Reglas o Caracteristicas:
+		Reglas o Caracteristicas:	
 			-No se puede instanciar
 			-El modificador abstract se puede asignar a metodos, en caso de los metodos abstractos no tienen cuerpo.
 			-Los metodos abstractos deben sobreescribirse OBLIGATORIAMENTE en las clases hijas
 			-Si dentro de la clase hay al menos un metodo abstracto la clase DEBE ser abstracta.
 			-Una clase abstracta puede no tener metodos abstractos.
+
+		-Interfaces (Interface) - Son componentes similares a las clases que se utilizan para simular herencia multiple, ademas de que se utiliza muy a menudo para capturar eventos del usuario.
+		Este componente tambien es conocido como clases abstractas puras debido a las siguientes caracteristicas:
+		1. No se pueden instanciar
+		2. No tienen constructor
+		3. Todos sus metodos deben ser abstractos y public
+		4. Todos sus atributos deben ser public static final
+		5. Se puede utilizar como un elemento padre, para aplicar herencia entre una clase y una interfaz se utiliza implements en vez de extends.
+		6. Se puede aplicar herencia entre interfaces, en dicho caso se utiliza extends.
+		7. Se puede aplicar herencia utilizando multiples interfaces separadas por coma.
+		8. Se declara utilizando la palabra reservada interface.
+
+		Usos de interfaces:
+		1. Librerias de constantes.
+		2. Estructuras muy genericas.
+		3. Para la gestión de eventos.
+
 	Polimorfismo:
+
+
+
+
+
+
+Interfaces Gráficas de Usuario (GUI)
+
+	AWT (Abstract Window Toolkit)
+	Swing
+	JavaFX
