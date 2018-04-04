@@ -44,7 +44,6 @@ public class Principal extends Application {
 	
 	public void gestionarEventos() {
 		escena.setOnKeyPressed(new EventHandler<KeyEvent>() {
-
 			@Override
 			public void handle(KeyEvent event) {
 				
