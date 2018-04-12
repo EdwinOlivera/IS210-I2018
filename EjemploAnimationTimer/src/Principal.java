@@ -22,14 +22,17 @@ public class Principal extends Application{
 	private boolean arriba;
 	private boolean abajo;
 	private String nombreImagen = "goku-nimbus.png";
+	private Image imagen;
 	
 	
 	public static void main(String[] args) {
 		launch(args);
 	}
 
+	//HashMap
 	@Override
 	public void start(Stage ventana){
+		cargarImagenes();
 		ventana.setTitle("Animation Timer");
 		root = new Group();
 		escena = new Scene(root,500,500);
@@ -40,6 +43,10 @@ public class Principal extends Application{
 		root.getChildren().add(lienzo);
 		cicloPrincipal();
 		ventana.show();
+	}
+	
+	public void cargarImagenes() {
+		imagen = new Image("goku-nimbus.png");
 	}
 	
 	public void cicloPrincipal() {
@@ -58,7 +65,7 @@ public class Principal extends Application{
 	
 	public void pintar() {
 		graficos.fillRect(0, 0, 500, 500);
-		graficos.drawImage(new Image(), x, y);
+		graficos.drawImage(imagen, x, y);
 	}
 	
 	public void registrarEventos() {
