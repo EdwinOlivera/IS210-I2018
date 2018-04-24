@@ -1,5 +1,6 @@
 package clases;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Alumno extends Persona{
@@ -13,7 +14,7 @@ public class Alumno extends Persona{
 			String genero, 
 			String identidad, 
 			Carrera carrera,
-			String[] clases, 
+			ArrayList<String> clases, 
 			String cuenta, 
 			float promedio
 	) {
@@ -57,7 +58,7 @@ public class Alumno extends Persona{
 	public String toString() {
 		return "Alumno [cuenta=" + cuenta + ", promedio=" + promedio + ", nombre=" + nombre + ", apellido=" + apellido
 				+ ", edad=" + edad + ", genero=" + genero + ", identidad=" + identidad + ", carrera=" + carrera
-				+ ", clases=" + Arrays.toString(clases) + "]";
+				+ ", clases=" + clases + "]";
 	}
 
 	

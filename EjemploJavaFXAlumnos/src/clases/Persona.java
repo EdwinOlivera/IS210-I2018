@@ -1,5 +1,6 @@
 package clases;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Persona extends Object{
@@ -9,10 +10,10 @@ public class Persona extends Object{
 	protected String genero;
 	protected String identidad;
 	protected Carrera carrera;
-	protected String clases[];
+	protected ArrayList<String> clases;
 	
 	public Persona(String nombre, String apellido, int edad, String genero, String identidad, Carrera carrera,
-			String[] clases) {
+			ArrayList<String> clases) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.edad = edad;
@@ -72,11 +73,11 @@ public class Persona extends Object{
 		this.carrera = carrera;
 	}
 
-	public String[] getClases() {
+	public ArrayList<String> getClases() {
 		return clases;
 	}
 
-	public void setClases(String[] clases) {
+	public void setClases(ArrayList<String> clases) {
 		this.clases = clases;
 	}
 
@@ -91,7 +92,7 @@ public class Persona extends Object{
 	@Override
 	public String toString() {
 		return "Persona [nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", genero=" + genero
-				+ ", identidad=" + identidad + ", carrera=" + carrera + ", clases=" + Arrays.toString(clases) + "]";
+				+ ", identidad=" + identidad + ", carrera=" + carrera + ", clases=" + clases + "]";
 	}
 	
 	

@@ -11,6 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
@@ -39,10 +40,17 @@ public class ControladorRegistroAlumnos implements Initializable{
 	@FXML private CheckBox chkClase3;
 	@FXML private ComboBox<Carrera> cmbCarreras;
 	@FXML private TextArea txtAResultado;
+	//Botones
+	@FXML private Button btnGuardar;
+	@FXML private Button btnActualizar;
+	@FXML private Button btnEliminar;
+	
 	
 	
 	private ArrayList<Alumno> alumnos;
 	private ObservableList<Carrera> carreras;
+	
+	private int indiceSeleccionado=-1;
 	
 	public ControladorRegistroAlumnos() {
 		alumnos = new ArrayList<Alumno>();
@@ -56,18 +64,60 @@ public class ControladorRegistroAlumnos implements Initializable{
 		else
 			genero = "Masculino";
 		
+		ArrayList<String> clasesSeleccionadas = new ArrayList<String>();
+		if(chkClase1.isSelected())
+			clasesSeleccionadas.add("Clase1");
+		
+		if(chkClase2.isSelected())
+			clasesSeleccionadas.add("Clase2");
+		
+		if(chkClase3.isSelected())
+			clasesSeleccionadas.add("Clase3");
+		
 		Alumno a = new Alumno(txtNombre.getText(), txtApellido.getText(),
 				Integer.parseInt(txtEdad.getText()),
 				genero,
 				txtIdentidad.getText(),
 				cmbCarreras.getSelectionModel().getSelectedItem(),
-				null,
+				clasesSeleccionadas,
 				txtCuenta.getText(),
 				Float.parseFloat(txtPromedio.getText())
 		);
 		
 		alumnos.add(a);
 		txtAResultado.appendText(a.toString() + "\n");
+	}
+	
+	@FXML
+	public void actualizar() {
+		String genero = "";
+		if (rbtFemenino.isSelected())
+			genero = "Femenino";
+		else
+			genero = "Masculino";
+		
+		ArrayList<String> clasesSeleccionadas = new ArrayList<String>();
+		if(chkClase1.isSelected())
+			clasesSeleccionadas.add("Clase1");
+		
+		if(chkClase2.isSelected())
+			clasesSeleccionadas.add("Clase2");
+		
+		if(chkClase3.isSelected())
+			clasesSeleccionadas.add("Clase3");
+		
+		Alumno a = new Alumno(txtNombre.getText(), txtApellido.getText(),
+				Integer.parseInt(txtEdad.getText()),
+				genero,
+				txtIdentidad.getText(),
+				cmbCarreras.getSelectionModel().getSelectedItem(),
+				clasesSeleccionadas,
+				txtCuenta.getText(),
+				Float.parseFloat(txtPromedio.getText())
+		);
+		alumnos.set(indiceSeleccionado, a);
+		llenarInformacion();
+		nuevo();
 	}
 
 	@FXML
@@ -84,27 +134,22 @@ public class ControladorRegistroAlumnos implements Initializable{
 		chkClase2.setSelected(false);
 		chkClase3.setSelected(false);
 		cmbCarreras.getSelectionModel().clearSelection();
+		btnGuardar.setDisable(false);
+	    btnActualizar.setDisable(true);
+	    btnEliminar.setDisable(true);
 	}
 	
 	@FXML
-	public void seleccionarRegistroEliminar() {
-		TextInputDialog dialog = new TextInputDialog("");
-		dialog.setTitle("¿Eliminar?");
-		dialog.setHeaderText("Se elminara el registro indicado");
-		dialog.setContentText("Ingrese el indice del registro a eliminar:");
-
-		// Traditional way to get the response value.
-		Optional<String> resultado = dialog.showAndWait();
-		if (resultado.isPresent()){
-		    alumnos.remove(Integer.parseInt(resultado.get()));
-		    llenarInformacion();
-		}
+	public void eliminar() {
+		alumnos.remove(indiceSeleccionado);
+		llenarInformacion();
+		nuevo();
 	}
 	
 	public void llenarInformacion() {
 		txtAResultado.setText(null);
 		for (int i = 0; i<alumnos.size();i++) {
-			txtAResultado.appendText(alumnos.get(i).toString());
+			txtAResultado.appendText(alumnos.get(i).toString()+"\n");
 		}
 	}
 	@FXML
@@ -113,7 +158,7 @@ public class ControladorRegistroAlumnos implements Initializable{
 	}
 	
 	@FXML
-	public void editar() {
+	public void seleccionar() {
 		nuevo();
 		TextInputDialog dialog = new TextInputDialog("");
 		dialog.setTitle("Editar");
@@ -123,7 +168,8 @@ public class ControladorRegistroAlumnos implements Initializable{
 		// Traditional way to get the response value.
 		Optional<String> resultado = dialog.showAndWait();
 		if (resultado.isPresent()){
-		    Alumno a = alumnos.get(Integer.parseInt(resultado.get()));
+			indiceSeleccionado = Integer.parseInt(resultado.get());
+		    Alumno a = alumnos.get(indiceSeleccionado);
 		    txtCuenta.setText(a.getCuenta());
 			txtNombre.setText(a.getNombre());
 			txtApellido.setText(a.getApellido());
@@ -136,6 +182,10 @@ public class ControladorRegistroAlumnos implements Initializable{
 				rbtMasculino.setSelected(true);
 
 			cmbCarreras.getSelectionModel().select(a.getCarrera());
+			
+			btnGuardar.setDisable(true);
+		    btnActualizar.setDisable(false);
+		    btnEliminar.setDisable(false);
 		}
 	}
 	@Override

@@ -85,44 +85,44 @@
                               <Insets right="5.0" />
                            </padding>
                         </Label>
-                        <TextField fx:id="txtCuenta" GridPane.columnIndex="1" />
-                        <TextField fx:id="txtNombre" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField fx:id="txtApellido" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="txtCuenta" text="666" GridPane.columnIndex="1" />
+                        <TextField fx:id="txtNombre" text="Juan" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtApellido" text="Perez" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <children>
                               <RadioButton fx:id="rbtFemenino" mnemonicParsing="false" text="Femenino">
                                  <toggleGroup>
                                     <ToggleGroup fx:id="genero" />
                                  </toggleGroup></RadioButton>
-                              <RadioButton fx:id="rbtMasculino" mnemonicParsing="false" text="Masculino" toggleGroup="$genero" />
+                              <RadioButton fx:id="rbtMasculino" mnemonicParsing="false" selected="true" text="Masculino" toggleGroup="$genero" />
                            </children>
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                         </HBox>
-                        <TextField fx:id="txtIdentidad" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <TextField fx:id="txtPromedio" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <TextField fx:id="txtIdentidad" text="3333" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <TextField fx:id="txtPromedio" text="22" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                            <children>
                               <CheckBox fx:id="chkClase1" mnemonicParsing="false" text="Clase1" />
                               <CheckBox fx:id="chkClase2" mnemonicParsing="false" text="Clase2" />
-                              <CheckBox fx:id="chkClase3" mnemonicParsing="false" text="Clase3" />
+                              <CheckBox fx:id="chkClase3" mnemonicParsing="false" selected="true" text="Clase3" />
                            </children>
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                         </HBox>
                         <ComboBox fx:id="cmbCarreras" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                        <TextField fx:id="txtEdad" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="txtEdad" text="34" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                   <VBox layoutX="438.0" layoutY="16.0" prefHeight="191.0" prefWidth="140.0" spacing="5.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#nuevo" prefWidth="150.0" text="Nuevo" />
-                        <Button mnemonicParsing="false" onAction="#guardar" prefWidth="150.0" text="Guardar" />
-                        <Button mnemonicParsing="false" prefWidth="150.0" text="Actualizar" />
-                        <Button mnemonicParsing="false" onAction="#seleccionarRegistroEliminar" prefWidth="150.0" text="Eliminar" />
-                        <Button mnemonicParsing="false" onAction="#editar" prefWidth="150.0" text="Editar" />
+                        <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#guardar" prefWidth="150.0" text="Guardar" />
+                        <Button fx:id="btnActualizar" disable="true" mnemonicParsing="false" onAction="#actualizar" prefWidth="150.0" text="Actualizar" />
+                        <Button fx:id="btnEliminar" disable="true" mnemonicParsing="false" onAction="#eliminar" prefWidth="150.0" text="Eliminar" />
+                        <Button mnemonicParsing="false" onAction="#seleccionar" prefWidth="150.0" text="Seleccionar" />
                         <Button mnemonicParsing="false" onAction="#salir" prefWidth="150.0" text="Salir" />
                      </children>
                   </VBox>
