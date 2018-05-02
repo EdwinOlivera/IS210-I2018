@@ -1,4 +1,5 @@
 package implementacion;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import clases.Fondo;
@@ -33,7 +34,7 @@ public class Juego extends Application{
 	private Jugador jugador;
 	private Fondo fondo1;
 	private Fondo fondo2;
-	private Item item;
+	private ArrayList<Item> items;
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -68,10 +69,15 @@ public class Juego extends Application{
 	}
 	
 	public void crearObjetosJuego() {
+		items = new ArrayList<Item>();
 		jugador = new Jugador(50,50,10, "goku1");
 		fondo1 = new Fondo(0,0,5,"fondo1");
 		fondo2 = new Fondo((int)imagenes.get("fondo1").getWidth(),0,5,"fondo2");
-		item = new Item(300,320,0,"item");
+		items.add(new Item(300,320,0,"item"));
+		items.add(new Item(350,320,0,"item"));
+		items.add(new Item(400,320,0,"item"));
+		items.add(new Item(450,320,0,"item"));
+		items.add(new Item(500,320,0,"item"));
 	}
 	
 	public void cicloPrincipal() {
@@ -94,7 +100,8 @@ public class Juego extends Application{
 		fondo1.pintar(graficos);
 		fondo2.pintar(graficos);
 		jugador.pintar(graficos);
-		item.pintar(graficos);
+		for (int i=0; i<items.size();i++)
+			items.get(i).pintar(graficos);
 		graficos.setFont(new Font(30));
 		graficos.fillText(String.valueOf(jugador.getPuntuacion()), 10d, 30d);
 	}
@@ -105,12 +112,15 @@ public class Juego extends Application{
 		fondo2.mover();
 		cambiarFondos();
 		
-		if (jugador.obtenerRectangulo().intersects(item.obtenerRectangulo().getBoundsInLocal()) && !item.isCapturado()) {
-			item.setCapturado(true);
-			jugador.agregarPuntuacion(1);
-			System.out.println("Colisionaron");
+		for (int i=0; i<items.size();i++) {
+			if (jugador.verificarColision(items.get(i)))
+				items.remove(items.get(i));
 			
 		}
+		
+		for (int i=0; i<items.size();i++)
+			items.get(i).mover();
+		
 	}
 	
 	public void cambiarFondos() {

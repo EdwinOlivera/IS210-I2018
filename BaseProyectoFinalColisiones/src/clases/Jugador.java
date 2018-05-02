@@ -12,10 +12,12 @@ public class Jugador {
 	private int puntuacion = 0;
 	private int ancho;
 	private int alto;
+	private int vidas=2;
 	
 	public Jugador(int x, int y, int velocidad, String indiceImagen) {
 		this.x = x;
 		this.y = y;
+
 		this.velocidad = velocidad;
 		this.indiceImagen = indiceImagen;
 		this.ancho = (int)Juego.imagenes.get(this.indiceImagen).getWidth();
@@ -95,5 +97,24 @@ public class Jugador {
 	
 	public void agregarPuntuacion(int puntuacion) {
 		this.puntuacion+=puntuacion;
+	}
+	
+	public boolean verificarColision(Item item) {
+		if (obtenerRectangulo().intersects(item.obtenerRectangulo().getBoundsInLocal()) && !item.isCapturado()) {
+			item.setCapturado(true);
+			/*
+			 if (item instanceof Vida)
+				agregarVida();
+			else if (item instanceof Moneda)
+				agregarPuntuacion();
+			*/
+			
+			agregarPuntuacion(1);
+			System.out.println("Colisionaron");
+			
+			return true;
+		}
+		
+		return false;
 	}
 }
